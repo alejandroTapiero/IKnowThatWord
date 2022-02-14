@@ -2,6 +2,9 @@ package myProject;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.Timer;
 
 /**
  * This class is used for ...
@@ -11,6 +14,8 @@ import java.awt.*;
 public class GUI extends JFrame {
 
     private Header headerProject;
+    private Timer timer, timer2;
+    private Escucha escucha;
 
     /**
      * Constructor of GUI class
@@ -19,7 +24,7 @@ public class GUI extends JFrame {
         initGUI();
 
         //Default JFrame configuration
-        this.setTitle("The Title app");
+        this.setTitle("I Know That Word");
         this.setSize(200,100);
         //this.pack();
         this.setResizable(true);
@@ -35,10 +40,15 @@ public class GUI extends JFrame {
     private void initGUI() {
         //Set up JFrame Container's Layout
         //Create Listener Object and Control Object
+        escucha = new Escucha();
         //Set up JComponents
         headerProject = new Header("Header ...", Color.BLACK);
 
         this.add(headerProject,BorderLayout.NORTH); //Change this line if you change JFrame Container's Layout
+
+        timer = new Timer(5000, escucha);
+        timer2 = new Timer (7000, escucha);
+
     }
 
     /**
@@ -55,7 +65,12 @@ public class GUI extends JFrame {
     /**
      * inner class that extends an Adapter Class or implements Listeners used by GUI class
      */
-    private class Escucha {
+    private class Escucha implements ActionListener {
 
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+        }
     }
 }
